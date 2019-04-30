@@ -1,7 +1,64 @@
-<div id="header">
-  <ul class="nav">
-    <li type="button"><a href="/homepageAdmin">Inicio</a></li>
-    <li type="button"><a href="/login">Login</a></li>
-  </ul>
-</div>
-
+<!-- BARRA SUPERIOR CONDICIONADA POR USUARIO  -->
+<!-- BARRA SIN LOGEAR -->
+<%
+ if (typeof req.session.user === 'undefined') {
+ %>
+  <div id="header">
+    <ul class="nav">
+      <li type="button"><a href="/homepageAdmin">Inicio</a></li>
+      <li type="button"><a href="/login">Login</a></li>
+    </ul>
+  </div>
+<%
+ }else{
+%>
+<!-- BARRA PARA ADMIN -->
+  <%
+  if (req.session.user.hierarchy == 1 ) {
+  %>
+    <div id="header">
+      <ul class="nav">
+        <li type="button"><a href="/homepageAdmin">Inicio</a></li>
+        <li type="button"><a href="/edit">Editar</a>
+          <ul>
+            <li type="button"><a href="">Agregar al menu</a></li>
+            <li type="button"><a href="">Quitar del menu</a></li>
+          </ul>
+        </li>
+        <li type="button"><a href="/pedidos">Pedidos</a></li>
+        <li type="button"><a href="admin">Admin</a>
+          <ul>
+            <li type="button"><a href="">Agregar/Quitar usuario</a></li>
+            <li type="button"><a href="">Presencia</a></li>
+            <li type="button"><a href="">Balance</a></li>
+          </ul>
+        </li>
+        <li type="button" id="user_info"><a href="login">
+            <%=
+              req.session.user.name
+            %> <%=
+              req.session.user.lastname
+            %>
+          </a>
+          <ul>
+            <li type="button" id="logout"><a href="/logout">Cerrar sesion</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  <%}%>
+<!-- BARRA PARA EMPLOYED -->
+  <% if (req.session.user.hierarchy == 2 ){ %>
+    <div id="header">
+      <ul class="nav">
+        <li type="button"><a href="/homepageAdmin">Inicio</a></li>
+        <li type="button"><a href="/edit">Editar</a></li>
+        <li type="button"><a href="/pedidos">Pedidos</a></li>
+        <li type="button" id="logout"><a href="/login">Cerrar sesion</a></li>
+      </ul>
+    </div>
+  <%}%>
+<%
+}
+%>
+<!-- FIN DE LA BARRA -->

@@ -8,4 +8,6 @@ module.exports.routes = {
   '/new_user': {view: 'pages/new_user'},
   'GET /login': {view: 'pages/login'},
   'POST /login': {controller: 'UserController', action: 'login'},
+  '/logout': {controller: 'LogoutController', action: 'logout'},
+
 };

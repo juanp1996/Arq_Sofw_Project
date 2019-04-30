@@ -21,8 +21,8 @@ module.exports.bootstrap = async function() {
   }
 
   await User.createEach([
-    { user_name:'JuanPalacio', user_pass: '7355608', name:'Juan', lastname: 'Palacio', hierarchy: 'Administrador', },
-    // etc.
+    { user_name:'admin', user_pass: 'admin', name:'Juan', lastname: 'Palacio', hierarchy: '1', },
+    { user_name:'empleado', user_pass: 'empleado', name:'Juan', lastname: 'Palacio', hierarchy: '2', },
   ]);
   // ```
 

@@ -20,7 +20,7 @@ module.exports = {
         required: true,
       },
       hierarchy:{
-        type: 'string',
+        type: 'number',
         required: true,
       },
   },
