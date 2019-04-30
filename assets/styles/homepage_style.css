@@ -1,21 +1,32 @@
 /*
 // BARRA PRINCIPAL
 */
-* {
-  margin:0px;
-  padding:0px;
-}
+ * {
+    margin:0px;
+    padding:0px;
+   }
+
 #header {
   margin:auto;
-  width:14000px;
+  width: border-box;
   font-family:Arial, Helvetica, sans-serif;
 }
-ul{
+#user_info{
+  position: relative;
+  float:right;
+}
+#logout{
+  padding: 7px 15px;
+}
+
+ul, ol {
   list-style:none;
 }
+
 .nav > li {
   float:left;
 }
+
 .nav li a {
   background-color:#000;
   color:#fff;
@@ -23,8 +34,28 @@ ul{
   padding:10px 12px;
   display:block;
 }
+
 .nav li a:hover {
   background-color:#434343;
+}
+
+.nav li ul {
+  display:none;
+  position:absolute;
+  min-width:140px;
+}
+
+.nav li:hover > ul {
+  display:block;
+}
+
+.nav li ul li {
+  position:relative;
+}
+
+.nav li ul li ul {
+  right:-140px;
+  top:0px;
 }
 /*
 //FIN BARRA PRINCIPAL

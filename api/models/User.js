@@ -19,7 +19,10 @@ module.exports = {
         type: 'string',
         required: true,
       },
+      hierarchy:{
+        type: 'string',
+        required: true,
+      },
   },
-
 };
 

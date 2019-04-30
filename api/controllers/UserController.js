@@ -12,7 +12,7 @@ module.exports = {
 
     console.log({user, pass});
 
-    let user_c = await User.findone({user_name: user , user_pass: pass});
+    let user_c = await User.findOne({user_name: user , user_pass: pass});
       if(!user_c){
         res.send("Usuario o contraseña invalidos");
       }else
