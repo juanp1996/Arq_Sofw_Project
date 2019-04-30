@@ -9,6 +9,7 @@
       <li type="button"><a href="/login">Login</a></li>
     </ul>
   </div>
+
 <%
  }else{
 %>
@@ -33,7 +34,7 @@
             <li type="button"><a href="">Balance</a></li>
           </ul>
         </li>
-        <li type="button" id="user_info"><a href="login">
+        <li type="button" id="user_info"><a href="">
             <%=
               req.session.user.name
             %> <%=
@@ -52,9 +53,24 @@
     <div id="header">
       <ul class="nav">
         <li type="button"><a href="/homepageAdmin">Inicio</a></li>
-        <li type="button"><a href="/edit">Editar</a></li>
+        <li type="button"><a href="/edit">Editar</a>
+        <ul>
+          <li type="button"><a href="">Agregar al menu</a></li>
+          <li type="button"><a href="">Quitar del menu</a></li>
+        </ul>
+        </li>
         <li type="button"><a href="/pedidos">Pedidos</a></li>
-        <li type="button" id="logout"><a href="/login">Cerrar sesion</a></li>
+        <li type="button" id="user_info"><a href="">
+            <%=
+              req.session.user.name
+            %> <%=
+              req.session.user.lastname
+            %>
+          </a>
+          <ul>
+            <li type="button" id="logout"><a href="/logout">Cerrar sesion</a></li>
+          </ul>
+        </li>
       </ul>
     </div>
   <%}%>
