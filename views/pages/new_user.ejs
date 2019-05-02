@@ -1,31 +1,86 @@
-<div class="container">
-  <h3>Usuarios
-    <table class='table'>
-      <tr>
-        <th>ID
-        <th>Nombre
-        <th>Apellidos
-        <th>Email
-        <th>
-        <th>
-        <th>
-      </tr>
-      <% _.each(users, function(User) { %>
-        <tr data-id="<%= User.id %>" data-model="user">
-          <td><%= User.id %>
-          <td><%= User.name %>
-          <td><%= User.lastname %>
-          <td><%= User.email %>
-          <td><a href="/user/show/<%= User.id %>" class="btn btn-sm btn-primary">Show</a>
-          <td><a href="/user/edit/<%= User.id %>" class="btn btn-sm btn-warning">Edit</a>
-          <td><form action="/user/destroy/<%= User.id %>" method="POST">
-              <input type="hidden" name="_method" value="delete"/>
-              <input type="submit" class="btn btn-sm btn-danger" value="Delete"/>
-              <input type="hidden" name="_csrf" value="<%= _csrf %>" />
-            </form>
-          </td>
-        </tr>
-      <% }) %>
-    </table>
-    <a href="/user/new">Crear Nuevo Usuario</a>
+<!-- BARRA SUPERIOR CONDICIONADA POR USUARIO  -->
+    <div id="header">
+      <ul class="nav">
+        <li type="button"><a href="/">Inicio</a></li>
+        <li type="button"><a href="/edit">Editar Menu</a>
+          <ul>
+            <li type="button"><a href="">Agregar al menu</a></li>
+            <li type="button"><a href="">Quitar del menu</a></li>
+          </ul>
+        </li>
+        <li type="button"><a href="/pedidos">Pedidos</a></li>
+        <li type="button"><a href="">Admin</a>
+          <ul>
+       <!-- <li type="button"><a href="/new_user">Agregar/Quitar usuario</a></li> -->
+            <li type="button"><a href="">Presencia</a></li>
+            <li type="button"><a href="">Balance</a></li>
+          </ul>
+        </li>
+        <li type="button" id="user_info"><a href="">Juan Palacio
+           <!--
+            <%=
+            //  req.session.user.name
+            %> <%=
+             // req.session.user.lastname
+            %>
+            -->
+          </a>
+          <ul>
+            <li type="button" id="logout"><a href="/logout">Cerrar sesion</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+<!--
+FIN DE LA BARRA
+-->
+
+
+<!--  BOTONES
+      * CREAR NUEVO USUARIO
+      * BORRAR USUARIO
+-->
+<div class="C_B_U">
+  <div id="header">
+    <ul class="nav">
+      <li type="button" class="button_C_B_U"><a href="/new_user">Agregar Usuario</a></li>
+      <li type="button" class="button_C_B_U"><a href="/new_user">Borrar Usuario</a></li>
+    </ul>
+  </div>
 </div>
+
+
+<!--  BOTONES
+      * CREAR NUEVO USUARIO
+      * BORRAR USUARIO
+-->
+
+
+
+<!--
+FORMULARIO DE CREACION DE USUARIO
+--> <!--
+<div class="New_user_form">
+<div class="one">
+  <form method="post" action="/new_user" class="nav">
+    <label for="user_name">Usuario</label>
+    <input type="text" placeholder="Ingrese el nombre de usuario" name="user_name">
+    <br>
+    <label for="user_pass">Contraseña</label>
+    <input type="password" placeholder="Ingrese contraseña" name="user_pass">
+    <br>
+    <label for="user_name">Nombre</label>
+    <input type="text" placeholder="Ingrese el nombre" name="user_name">
+    <br>
+    <label for="user_name">Apellido</label>
+    <input type="text" placeholder="Ingrese el apellido" name="user_name">
+    <br>
+     <label for="male">Administrador   <input type="radio" name="hierarchy" id="admin_input" value="admin"></label><br>
+     <label for="female">Empleado     <input type="radio" name="hierarchy" id="employed_input" value="employed"></label><br>
+    <button type="submit">Crear usuario</button>
+  </form>
+</div>
+</div>
+
+FIN FORMULARIO DE CREACION DE USUARIO
+-->

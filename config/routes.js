@@ -1,7 +1,5 @@
 module.exports.routes = {
   '/': {view: 'pages/homepage'},
-  '/homepageAdmin': {view: 'pages/homepageAdmin'},
-  '/homepageEmployed': {view: 'pages/homepageEmployed'},
   '/Admin': {view: 'pages/admin'},
   '/edit': {view: 'pages/edit'},
   '/pedidos': {view: 'pages/pedidos'},
