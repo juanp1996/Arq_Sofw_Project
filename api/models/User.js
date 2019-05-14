@@ -12,15 +12,15 @@ module.exports = {
         required: true,
       },
       name:{
-        type:'string',
+        type:"string",
         required: true,
       },
       lastname:{
-        type: 'string',
+        type: "string",
         required: true,
       },
       hierarchy:{
-        type: 'number',
+        type: "number",
         required: true,
       },
   },

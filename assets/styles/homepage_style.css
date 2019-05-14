@@ -5,7 +5,6 @@
     margin:0px;
     padding:0px;
    }
-
 #header {
   margin:auto;
   width: border-box;
@@ -16,18 +15,21 @@
   float:right;
 }
 
-div.C_B_U{
-  position: absolute;
-  top: 150px;
-  right: 800px;
+#admin_input{
+  position: relative;
+  left: 150px;
+}
+#employed_input{
+  position: relative;
+  left: 178px;
 }
 
-div.New_user_form{
-  position: absolute;
-  top: -20px;
+.New_user_form div{
+  position: relative;
+  top: -40px;
+  left: 530px;
   padding: 100px;
   width: 300px;
-  /*position: center;*/
 }
 ul, ol {
   list-style:none;

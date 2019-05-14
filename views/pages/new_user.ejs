@@ -36,51 +36,35 @@ FIN DE LA BARRA
 -->
 
 
-<!--  BOTONES
-      * CREAR NUEVO USUARIO
-      * BORRAR USUARIO
--->
-<div class="C_B_U">
-  <div id="header">
-    <ul class="nav">
-      <li type="button" class="button_C_B_U"><a href="/new_user">Agregar Usuario</a></li>
-      <li type="button" class="button_C_B_U"><a href="/new_user">Borrar Usuario</a></li>
-    </ul>
-  </div>
-</div>
-
-
-<!--  BOTONES
-      * CREAR NUEVO USUARIO
-      * BORRAR USUARIO
--->
-
-
-
 <!--
 FORMULARIO DE CREACION DE USUARIO
---> <!--
+-->
+
 <div class="New_user_form">
 <div class="one">
   <form method="post" action="/new_user" class="nav">
-    <label for="user_name">Usuario</label>
+    <label>Usuario</label>
     <input type="text" placeholder="Ingrese el nombre de usuario" name="user_name">
     <br>
-    <label for="user_pass">Contraseña</label>
+    <label>Nombre</label>
+    <input type="text" placeholder="Ingrese el nombre" name="name">
+    <br>
+    <label>Apellido</label>
+    <input type="text" placeholder="Ingrese el apellido" name="lastname">
+    <br>
+    <label>Contraseña</label>
     <input type="password" placeholder="Ingrese contraseña" name="user_pass">
     <br>
-    <label for="user_name">Nombre</label>
-    <input type="text" placeholder="Ingrese el nombre" name="user_name">
+    <label>Confirme Contraseña</label>
+    <input type="password" placeholder="Confirme contraseña" name="confirmation">
     <br>
-    <label for="user_name">Apellido</label>
-    <input type="text" placeholder="Ingrese el apellido" name="user_name">
-    <br>
-     <label for="male">Administrador   <input type="radio" name="hierarchy" id="admin_input" value="admin"></label><br>
-     <label for="female">Empleado     <input type="radio" name="hierarchy" id="employed_input" value="employed"></label><br>
+    <label>Administrador <input type="radio" name="hierarchy" id="admin_input" value="admin"></label><br>
+    <label>Empleado     <input type="radio" name="hierarchy" id="employed_input" value="employed"></label><br>
     <button type="submit">Crear usuario</button>
+    <input type="hidden" name="_csrf" value="<%= _csrf %> /">
   </form>
 </div>
 </div>
-
+<!--
 FIN FORMULARIO DE CREACION DE USUARIO
 -->
