@@ -15,9 +15,21 @@ module.exports = {
       let hierarchy = req.param('hierarchy');
         if (user_pass !== pass_confirmation) {
             res.send("Pone bien las contraseñas tarado");
-        }else {
-            await User.createEach([{user_name: userID, user_pass: user_pass, name: user_name, lastname: user_lastname, hierarchy: hierarchy},]);
+        }else{
+          let check = await User.findOne({user_name : userID});
+          if(!check){
+            await User.createEach([{
+              user_name: userID,
+              user_pass: user_pass,
+              name: user_name,
+              lastname: user_lastname,
+              hierarchy: hierarchy
+            },]);
+            res.data.valueOf(1);
             res.redirect('/');
+            }else{
+            res.send("El usuario ya existe");
+        }
         }
 
   },
