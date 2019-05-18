@@ -6,7 +6,7 @@
   <div id="header">
     <ul class="nav">
       <li type="button"><a href="/">Inicio</a></li>
-      <li type="button"><a href="/login">Login</a></li>
+      <li type="button" id="btn-Open-login"><a>Login</a></li>
     </ul>
   </div>
 
@@ -29,8 +29,8 @@
         <li type="button"><a href="/pedidos">Pedidos</a></li>
         <li><a href="">Admin</a>
           <ul>
-            <li type="button"><a href="/new_user">Agregar usuario</a></li>
-            <li type="button"><a href="/new_user">Borrar usuario</a></li>
+            <li type="button" id="btn-new-user"><a>Agregar usuario</a></li>
+            <li type="button" id="btn-delete-user"><a href="/new_user">Borrar usuario</a></li>
             <li type="button"><a href="">Presencia</a></li>
             <li type="button"><a href="">Balance</a></li>
           </ul>
@@ -79,3 +79,62 @@
 }
 %>
 <!-- FIN DE LA BARRA -->
+
+
+<!--
+CONTENEDOR DE FORMULARIO LOGIN
+-->
+
+<div class="overlay" id="login-overlay">
+  <div class="popup" id="login-popup">
+    <h3>Sign Up</h3>
+    <form method="post" action="/login">
+      <div class="inputs-conteiner">
+      <input type="text" placeholder="Ingrese nombre de usuario" name="user_name">
+      <br>
+      <input type="password" placeholder="Ingrese contraseña" name="user_pass">
+      <br>
+      <button type="submit" class="btn-aceptar">Ingresar</button>
+      <button type="button" class="btn-cancel" id="btn-cancel-login">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<!--
+FIN CONTENEDOR DE FORMULARIO LOGIN
+-->
+
+
+<!--
+CONTENEDOR DEL FORMULARIO PARA EL REGISTRO DE USUARIO
+-->
+
+<div class="overlay" id="create-overlay">
+  <div class="popup" id="create-popup">
+    <h3>Crear nuevo usuario</h3>
+    <form method="post" action="/new_user">
+      <div class="inputs-conteiner">
+      <input type="text" placeholder="Ingrese el nombre de usuario" name="user_name">
+      <br>
+      <input type="text" placeholder="Ingrese el nombre" name="name">
+      <br>
+      <input type="text" placeholder="Ingrese el apellido" name="lastname">
+      <br>
+      <input type="password" placeholder="Ingrese contraseña" name="user_pass">
+      <br>
+      <input type="password" placeholder="Confirme contraseña" name="confirmation">
+      <br>
+      <label>Administrador <input type="radio" name="hierarchy" class="hierarchy_input" value=1></label><br>
+      <label>Empleado     <input type="radio" name="hierarchy" class="hierarchy_input" value=2></label><br>
+      <button type="submit" class="btn-aceptar">Crear usuario</button>
+      <button type="button" class="btn-cancel" id="btn-cancel-create">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!--
+FIN DEL CONTENEDOR DE FORMULARIO PARA REGISTRO DE USUARIOS
+-->

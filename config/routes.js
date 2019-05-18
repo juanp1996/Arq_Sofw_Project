@@ -3,10 +3,10 @@ module.exports.routes = {
   '/Admin': {view: 'pages/admin'},
   '/edit': {view: 'pages/edit'},
   '/pedidos': {view: 'pages/pedidos'},
-  'GET /new_user': {view: 'pages/new_user'},
-  'POST /new_user': {controller: 'NewUserController', action: 'fn'},
-  'GET /login': {view: 'pages/login'},
-  'POST /login': {controller: 'UserController', action: 'login'},
+  '/successfully': {view: 'pages/successfully'},
+  // 'GET /login': {view: 'pages/login'},
+  '/login': {controller: 'UserController', action: 'login'},
   '/logout': {controller: 'LogoutController', action: 'logout'},
+  '/new_user': {controller: 'NewUserController', action: 'new'},
 
 };

@@ -1,0 +1,118 @@
+  .overlay {
+    background: rgba(0,0,0,.5);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center; /*alinear elementos de forma vertical */
+    justify-content: center; /*alinear de forma horizontal*/
+    visibility: hidden; /* Mantiene la pantalla escondida */
+  }
+  .overlay.active{
+    visibility: visible; /* Muestra la pantalla al activarla mediante js */
+  }
+
+  .popup{
+    background: #f8f8f8;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,.5);
+    border-radius: 3px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 20px;
+    text-align: center;
+    width: 400px;
+    transition: .1s ease all;
+    transform: scale(0.3);
+    opacity: 0;
+  }
+
+  .popup h3{
+    font-size: 36px;
+    margin-bottom: 10px;
+    opacity: 0;
+  }
+
+  .popup form .inputs-conteiner{
+  opacity: 0;
+  }
+
+  .popup form .inputs-conteiner input{
+    width: 100%;  /*ancho*/
+    margin-bottom: 10px; /*separador de inputs*/
+    height: 32px; /*altura*/
+    line-height: 52px; /* para que la fuente dentro del input quede centrada verticalmente */
+    font-size: 18px;
+    text-align: center;
+    border: 1px solid #BBBBBB;
+  }
+
+  .popup label{
+    margin-bottom: 10px; /*separador de inputs*/
+    height: 32px; /*altura*/
+    font-size: 18px;
+    text-align: center;
+  }
+  .popup .hierarchy_input{
+    height: 15px;
+    margin-bottom: 10px;
+  }
+
+  .popup .btn-aceptar{
+    padding: 0px 20px;
+    height: 40px;
+    line-height: 40px;
+    border: none;
+    color: #f8f8f8;
+    background-color: #000;
+    border-radius: 3px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: .3s ease all;
+  }
+
+  .popup .btn-aceptar:hover{
+    background:#434343;
+  }
+
+  .popup .btn-cancel{
+    padding: 0px 20px;
+    height: 40px;
+    line-height: 40px;
+    border: none;
+    color: #f8f8f8;
+    background-color: #000;
+    border-radius: 3px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: .3s ease all;
+  }
+  .popup .btn-cancel:hover{
+    background:#434343;
+  }
+  .hierarchy_input{
+
+  }
+
+  /* ------------------ */
+  /*     ANIMACIONES    */
+  /* ------------------ */
+
+.popup.active { opacity: 1; transform: scale(1);}
+.popup.active h3 { animation: Tittle 1s ease .4s forwards;}
+.popup.active .inputs-conteiner { animation: InputsAnimation 1s ease 1.3s forwards }
+
+  @keyframes Tittle {
+  from{
+    transform: translateY(-25px);
+    opacity: 0;
+    }
+  to{
+    transform: translateY(0px);
+    opacity: 1;
+    }
+  }
+  @keyframes InputsAnimation {
+    from{opacity: 0;}
+    to{opacity: 1;}
+  }

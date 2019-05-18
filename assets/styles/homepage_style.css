@@ -15,14 +15,14 @@
   float:right;
 }
 
-#admin_input{
-  position: relative;
-  left: 150px;
-}
-#employed_input{
-  position: relative;
-  left: 178px;
-}
+/*#admin_input{*/
+/*  position: relative;*/
+/*  left: 150px;*/
+/*}*/
+/*#employed_input{*/
+/*  position: relative;*/
+/*  left: 178px;*/
+/*}*/
 
 .New_user_form div{
   position: relative;
