@@ -3,7 +3,8 @@
 <%
  if (typeof req.session.user === 'undefined') {
  %>
-  <div id="header">
+  <div id="header" xmlns:pop="http://www.w3.org/1999/html" xmlns:pop="http://www.w3.org/1999/xhtml"
+       xmlns:pop="http://www.w3.org/1999/xhtml" xmlns:pop="http://www.w3.org/1999/xhtml">
     <ul class="nav">
       <li type="button"><a href="/">Inicio</a></li>
       <li type="button" id="btn-Open-login"><a>Login</a></li>
@@ -17,6 +18,7 @@
   <%
   if (req.session.user.hierarchy == 1 ) {
   %>
+
     <div id="header">
       <ul class="nav">
         <li type="button"><a href="/">Inicio</a></li>
@@ -88,7 +90,8 @@ CONTENEDOR DE FORMULARIO LOGIN
 <div class="overlay" id="login-overlay">
   <div class="popup" id="login-popup">
     <h3>Sign Up</h3>
-    <form method="post" action="/login">
+    <span id="error-login-user"></span>
+    <form id="form-login-user">
       <div class="inputs-conteiner">
       <input type="text" placeholder="Ingrese nombre de usuario" name="user_name">
       <br>
@@ -107,27 +110,28 @@ FIN CONTENEDOR DE FORMULARIO LOGIN
 
 
 <!--
-CONTENEDOR DEL FORMULARIO PARA EL REGISTRO DE USUARIO
+FORMULARIO REGISTRO DE USUARIO
 -->
 
 <div class="overlay" id="create-overlay">
   <div class="popup" id="create-popup">
     <h3>Crear nuevo usuario</h3>
-    <form method="post" action="/new_user">
+    <span id="error-new-user"></span>
+    <form id="form-create-user">
       <div class="inputs-conteiner">
-      <input type="text" placeholder="Ingrese el nombre de usuario" name="user_name">
+      <input type="text" placeholder="Ingrese el nombre de usuario" name="user_name" required>
       <br>
-      <input type="text" placeholder="Ingrese el nombre" name="name">
+      <input type="text" placeholder="Ingrese el nombre" name="name" required>
       <br>
-      <input type="text" placeholder="Ingrese el apellido" name="lastname">
+      <input type="text" placeholder="Ingrese el apellido" name="lastname" required>
       <br>
-      <input type="password" placeholder="Ingrese contraseña" name="user_pass">
+      <input type="password" placeholder="Ingrese contraseña" name="user_pass" required>
       <br>
-      <input type="password" placeholder="Confirme contraseña" name="confirmation">
+      <input type="password" placeholder="Confirme contraseña" name="confirmation" required>
       <br>
       <label>Administrador <input type="radio" name="hierarchy" class="hierarchy_input" value=1></label><br>
       <label>Empleado     <input type="radio" name="hierarchy" class="hierarchy_input" value=2></label><br>
-      <button type="submit" class="btn-aceptar">Crear usuario</button>
+      <button type="submit" class="btn-aceptar" id="btn-create-user">Crear usuario</button>
       <button type="button" class="btn-cancel" id="btn-cancel-create">Cancelar</button>
       </div>
     </form>
@@ -135,5 +139,37 @@ CONTENEDOR DEL FORMULARIO PARA EL REGISTRO DE USUARIO
 </div>
 
 <!--
-FIN DEL CONTENEDOR DE FORMULARIO PARA REGISTRO DE USUARIOS
+FIN DE FORMULARIO PARA REGISTRO DE USUARIOS
 -->
+
+
+<!--RESPUESTAS POST-FORM USER CREATE-->
+<!--
+MENSAJE EXITO EN LA CREACION DE USUARIO
+-->
+<div class="overlay" id="Success-overlay">
+  <div class="popup" id="Success-popup">
+    <h3 id="success_create">!El usuario se a creado con exito!</h3>
+    <form>
+      <div class="inputs-conteiner">
+        <button type="submit" class="btn-aceptar" id="btn-Success-aceptar">Aceptar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<%
+if (typeof req.session.user != 'undefined') {
+%>
+<script src="/dependencies/CreateUserPopup.js"></script>
+<%
+} else {
+%>
+  <script src="/dependencies/LoginPopup.js"></script>
+<%
+}
+%>
+<!--
+FIN DE MENSAJE EXITO EN LA CREACION DE USUARIO
+-->
+<!--FIN DE RESPUESTAS POST-FORM USER CREATE-->

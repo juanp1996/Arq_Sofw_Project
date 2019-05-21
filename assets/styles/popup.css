@@ -53,6 +53,14 @@
     font-size: 18px;
     text-align: center;
   }
+  .popup span{
+    font-size: 15px;
+    color: red;
+  }
+  .popup #success_create{
+    color: limegreen;
+  }
+
   .popup .hierarchy_input{
     height: 15px;
     margin-bottom: 10px;
