@@ -1,3 +1,60 @@
+/*FONT*/
+@font-face {
+  font-family: "Whisky Coke";
+  scr: url("/assets/font/Whisky Coke.otf") format("opentype"),
+}
+
+/*----*/
+/*FONDO DE INICIO*/
+/*----*/
+
+.InitBackground {
+  position: fixed;
+  top: 38px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center; /*alinear elementos de forma vertical */
+  justify-content: center; /*alinear de forma horizontal*/
+  transition: 1s ease all;
+  opacity: 1;
+  visibility: visible;
+}
+.InitBackground img{
+  height: auto;
+  width: 100%;
+}
+@supports (object-fit: cover) {
+  .InitBackground img{
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
+}
+
+.InitBackground .btn-aceptar{
+  padding: 0px 20px;
+  height: 40px;
+  line-height: 40px;
+  color: #f8f8f8;
+  background-color: #000;
+  border-radius: 3px;
+  font-size: 35px;
+  cursor: pointer;
+  font-family: "Calibri Light";
+  border: 1px solid #BBBBBB;
+}
+
+.InitBackground .btn-aceptar:hover{
+  background:#434343;
+}
+
+
+/*----*/
+/*POPUP*/
+/*----*/
+
   .overlay {
     background: rgba(0,0,0,.5);
     position: fixed;
@@ -42,7 +99,7 @@
     margin-bottom: 10px; /*separador de inputs*/
     height: 32px; /*altura*/
     line-height: 52px; /* para que la fuente dentro del input quede centrada verticalmente */
-    font-size: 18px;
+    font-size: 25px;
     text-align: center;
     border: 1px solid #BBBBBB;
   }
@@ -109,6 +166,7 @@
 .popup.active { opacity: 1; transform: scale(1);}
 .popup.active h3 { animation: Tittle 1s ease .4s forwards;}
 .popup.active .inputs-conteiner { animation: InputsAnimation 1s ease 1.3s forwards }
+.InitBackground.active { animation: Bckg 1.5s ease .1s forwards }
 
   @keyframes Tittle {
   from{
@@ -124,3 +182,16 @@
     from{opacity: 0;}
     to{opacity: 1;}
   }
+  @keyframes Bckg {
+    from{
+      /*transform: translateY();*/
+      opacity: 1;
+    }
+    to{
+      /*transform: translateY(200px);*/
+      opacity: 0;
+    }
+  }
+
+
+

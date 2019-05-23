@@ -32,7 +32,7 @@
         <li><a href="">Admin</a>
           <ul>
             <li type="button" id="btn-new-user"><a>Agregar usuario</a></li>
-            <li type="button" id="btn-delete-user"><a href="/new_user">Borrar usuario</a></li>
+            <li type="button" id="btn-OpenDelete-user"><a>Borrar usuario</a></li>
             <li type="button"><a href="">Presencia</a></li>
             <li type="button"><a href="">Balance</a></li>
           </ul>
@@ -82,7 +82,22 @@
 %>
 <!-- FIN DE LA BARRA -->
 
+<!--
+PANTALLA DE INICIO FONDO LOGO
+-->
 
+
+<!--
+FIN PANTALLA DE INICIO FONDO LOGO
+-->
+<%if (typeof req.session.user === 'undefined') { %>
+<div class="InitBackground" id="InitBackground">
+  <img src="/images/pasta.jpg">
+</div>
+<div class="InitBackground" id="btn-bckg">
+  <button type="button" class="btn-aceptar" id="btn_bckg_acept">Comenzar pedido</button>
+</div>
+<%}%>
 <!--
 CONTENEDOR DE FORMULARIO LOGIN
 -->
@@ -143,7 +158,8 @@ FIN DE FORMULARIO PARA REGISTRO DE USUARIOS
 -->
 
 
-<!--RESPUESTAS POST-FORM USER CREATE-->
+<!--
+RESPUESTAS POST-FORM USER CREATE-->
 <!--
 MENSAJE EXITO EN LA CREACION DE USUARIO
 -->
@@ -157,19 +173,47 @@ MENSAJE EXITO EN LA CREACION DE USUARIO
     </form>
   </div>
 </div>
-
-<%
-if (typeof req.session.user != 'undefined') {
-%>
-<script src="/dependencies/CreateUserPopup.js"></script>
-<%
-} else {
-%>
-  <script src="/dependencies/LoginPopup.js"></script>
-<%
-}
-%>
 <!--
 FIN DE MENSAJE EXITO EN LA CREACION DE USUARIO
 -->
 <!--FIN DE RESPUESTAS POST-FORM USER CREATE-->
+
+
+<!--
+BORRAR USUARIOS
+-->
+
+<div class="overlay" id="delete-user-overlay">
+  <div class="popup" id="delete-user-popup">
+    <h3 id="delete-user-h3">Borrar usuario</h3>
+    <form id="form-delete-user">
+      <div class="inputs-conteiner">
+        <input type="text" placeholder="Nombre" id="find_user_name" name="name">
+        <div>
+        <ul id="user-list"></ul>
+        </div>
+        <button type="submit" class="btn-aceptar" id="btn-aceptar-delete">Aceptar</button>
+        <button class="btn-cancel" id="btn-cancelar-delete">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!--
+FIN DE BORRAR USUARIOS
+-->
+
+
+<%
+if (typeof req.session.user != 'undefined') {
+%>
+  <script src="/dependencies/CreateUserPopup.js"></script>
+  <script src="/dependencies/DeleteUserPopup.js"></script>
+<%
+} else {
+%>
+  <script src="/dependencies/LoginPopup.js"></script>
+  <script src="/dependencies/background.js"></script>
+<%
+}
+%>

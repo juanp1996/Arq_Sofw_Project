@@ -22,14 +22,7 @@ btnCancelLoginPopup.addEventListener("click", function () {
 formLoginUser.addEventListener('submit', async (e) => {
   e.preventDefault();
   let url = '/login';
-  let values = Object.values(formLoginUser).reduce((obj,field) => {
-    if (field.type == 'radio' && field.checked) {
-      obj[field.name] = field.value;
-    } else if (field.type != 'radio') {
-      obj[field.name] = field.value;
-    }
-    return obj
-  }, {});
+  let values = Object.values(formLoginUser).reduce((obj,field) => {obj[field.name] = field.value; return obj}, {});
 
   let response = await fetch(url, {
     method: 'POST',
