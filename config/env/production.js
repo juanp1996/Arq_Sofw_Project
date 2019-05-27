@@ -47,7 +47,8 @@ module.exports = {
     *                                                                          *
     ***************************************************************************/
     default: {
-      // adapter: 'sails-mysql',
+      adapter: 'sails-postgres',
+      url:"//eqmmygljxrtetv:c8140bdea916fb24567d7c822fe8e41068981121a7659e219125efdbc74f6edf@ec2-54-163-230-199.compute-1.amazonaws.com:5432/d95j4ehh5crg0i"
       // url: 'mysql://user:password@host:port/database',
       //--------------------------------------------------------------------------
       //  /\   To avoid checking it in to version control, you might opt to set
