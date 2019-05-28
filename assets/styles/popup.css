@@ -39,16 +39,123 @@
   line-height: 40px;
   color: #f8f8f8;
   background-color: #000;
-  border-radius: 3px;
-  font-size: 35px;
+  font-size: 30px;
   cursor: pointer;
-  font-family: "Calibri Light";
   border: 1px solid #BBBBBB;
+  border-radius: 10px;
+  position: fixed;
+  bottom: 70px;
+  left: 125px;
 }
-
 .InitBackground .btn-aceptar:hover{
   background:#434343;
 }
+
+/*----*/
+/*MENU*/
+/*----*/
+.menu_conteiner{
+  position: fixed;
+  top: 38px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #FA3F3F;
+  transition: 1s ease all;
+  opacity: 0;
+  visibility: hidden;
+}
+/* MENU ADD CONTEINER */
+
+@supports (object-fit: cover) {
+  .menu_add .menu-input #img-cont_menu img{
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
+}
+.menu_add{
+  border: 3px dashed #777777;
+  border-radius: 5px;
+  width: 150px;
+  height: 200px;
+  position: relative;
+  top: 20px;
+  left: 20px;
+  cursor: pointer;
+
+}
+.menu_add:hover{
+  background-color: #DDDDDD;
+}
+
+
+/*BTN ADD MENU*/
+.menu-input{
+  position: relative;
+  left: 20px;
+  right: 20px;
+  top: 20px;
+  border: 3px dashed #777777;
+  border-radius: 5px;
+  width: 110px;
+  height: 110px;
+}
+.text_conteiner{
+  position: relative;
+  top: 30px;
+  left: 20px;
+  width: 110px;
+  height: 25px;
+  border-radius: 5px;
+  border: 3px dashed #777777;
+}
+.text_conteiner h3{
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  font-size: 20px;
+  color: #777777;
+}
+/*BTN ADD MENU*/
+
+/*ADD MENU FORM*/
+.menu_add_form_overlay{
+  background: rgba(0,0,0,.5);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center; /*alinear elementos de forma vertical */
+  justify-content: center; /*alinear de forma horizontal*/
+  visibility: hidden; /* Mantiene la pantalla escondida */
+}
+.menu_add_form_overlay.active{
+  visibility: visible; /* Muestra la pantalla al activarla mediante js */
+}
+
+.menu_add_form_popup{
+  background: #f8f8f8;
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,.5);
+  border-radius: 3px;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 20px;
+  text-align: center;
+  width: 400px;
+  transition: .4s ease all;
+  transform: scale(0.3);
+  opacity: 0;
+}
+
+/*FIN ADD MENU FORM*/
+
+
+
+/*----*/
+/*FIN MENU*/
+/*----*/
+
 
 
 /*----*/
@@ -99,7 +206,7 @@
     margin-bottom: 10px; /*separador de inputs*/
     height: 32px; /*altura*/
     line-height: 52px; /* para que la fuente dentro del input quede centrada verticalmente */
-    font-size: 25px;
+    font-size: 13px;
     text-align: center;
     border: 1px solid #BBBBBB;
   }
@@ -167,7 +274,8 @@
 .popup.active h3 { animation: Tittle 1s ease .4s forwards;}
 .popup.active .inputs-conteiner { animation: InputsAnimation 1s ease 1.3s forwards }
 .InitBackground.active { animation: Bckg 1.5s ease .1s forwards }
-
+.menu_conteiner.active{ animation: show_Menu 1s ease 1.2s forwards}
+.menu_add_form_popup.active { opacity: 1; transform: scale(1);}
   @keyframes Tittle {
   from{
     transform: translateY(-25px);
@@ -192,6 +300,9 @@
       opacity: 0;
     }
   }
-
+  @keyframes show_Menu {
+    from{opacity: 0; visibility: hidden;}
+    to{opacity: 1; visibility: visible;}
+  }
 
 

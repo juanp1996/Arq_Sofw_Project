@@ -24,7 +24,7 @@
         <li type="button"><a href="/">Inicio</a></li>
         <li type="button"><a href="/edit">Editar Menu</a>
           <ul>
-            <li type="button"><a href="">Agregar al menu</a></li>
+            <li type="button" id="add_menu_01"><a>Agregar al menu</a></li>
             <li type="button"><a href="">Quitar del menu</a></li>
           </ul>
         </li>
@@ -58,7 +58,7 @@
         <li type="button"><a href="/">Inicio</a></li>
         <li type="button"><a href="/edit">Editar</a>
         <ul>
-          <li type="button"><a href="">Agregar al menu</a></li>
+          <li type="button" id="add_menu_01"><a href="">Agregar al menu</a></li>
           <li type="button"><a href="">Quitar del menu</a></li>
         </ul>
         </li>
@@ -85,19 +85,62 @@
 <!--
 PANTALLA DE INICIO FONDO LOGO
 -->
-
-
+<%if (typeof req.session.user === 'undefined') { %>
+  <div class="InitBackground" id="InitBackground">
+    <img src="/images/pasta.jpg">
+  </div>
+  <div class="InitBackground" id="btn-bckg">
+    <button type="button" class="btn-aceptar" id="btn_bckg_acept">Comenzar pedido</button>
+  </div>
+<%}%>
 <!--
 FIN PANTALLA DE INICIO FONDO LOGO
 -->
-<%if (typeof req.session.user === 'undefined') { %>
-<div class="InitBackground" id="InitBackground">
-  <img src="/images/pasta.jpg">
+
+
+<!--
+MENU
+-->
+<div class="menu_conteiner" id="menu_conteiner">
+<div class="menu_add" id="menu_add">
+  <div class="menu-input">
+    <div id="img-cont_menu">
+      <img src="/images/img_p_menu.png" style="width: 90px; height: 90px; position: relative; top: 10px; left: 10px;">
+    </div>
+  </div>
+  <div class="text_conteiner">
+    <h3>Agregar</h3>
+  </div>
 </div>
-<div class="InitBackground" id="btn-bckg">
-  <button type="button" class="btn-aceptar" id="btn_bckg_acept">Comenzar pedido</button>
 </div>
-<%}%>
+<!--
+FORM PARA AGREGAR MENU
+-->
+
+<div class="menu_add_form_overlay" id="menu_add_form_overlay">
+  <div class="menu_add_form_popup" id="menu_add_form_popup">
+    <h3>Agregar un nuevo producto al menu</h3>
+    <div class="add_form_menu_input_conteiner" id="add_form_menu_input_conteiner">
+      <label>Agrega una imagen</label>
+      <div id="product_img_imput"><input type="file" accept=".jpg , .jpeg"></div><br>
+      <input type="text" placeholder="Nombre del producto" name="product_name"><br>
+      <input type="number" placeholder="Ingrese el valor del producto" name="product_price"><br>
+      <input type="text" placeholder="Seleccione el tipo de producto" name="product_type"><br>
+      <input type="text" placeholder="Ofrezca una descripcion de su producto" name="product_description"><br>
+    </div>
+    <button type="submit" class="btn_add_new_menu">Agregar</button>
+    <button type="button" class="btn_cancel_new_menu" id="btn_cancel_new_menu">Cancelar</button>
+  </div>
+</div>
+<!--
+FORM PARA AGREGAR MENU
+-->
+
+
+<!--
+FIN MENU
+-->
+
 <!--
 CONTENEDOR DE FORMULARIO LOGIN
 -->
@@ -209,11 +252,15 @@ if (typeof req.session.user != 'undefined') {
 %>
   <script src="/dependencies/CreateUserPopup.js"></script>
   <script src="/dependencies/DeleteUserPopup.js"></script>
+  <script src="/dependencies/add_menu.js"></script>
+  <script src="/dependencies/add_menu_01.js"></script>
 <%
 } else {
 %>
   <script src="/dependencies/LoginPopup.js"></script>
   <script src="/dependencies/background.js"></script>
+  <script src="/dependencies/add_menu.js"></script>
+
 <%
 }
 %>
