@@ -90,7 +90,7 @@
 }
 
 
-/*BTN ADD MENU*/
+/* BTN ADD MENU */
 .menu-input{
   position: relative;
   left: 20px;
@@ -116,44 +116,61 @@
   font-size: 20px;
   color: #777777;
 }
-/*BTN ADD MENU*/
+/* FIN BTN ADD MENU */
 
-/*ADD MENU FORM*/
-.menu_add_form_overlay{
-  background: rgba(0,0,0,.5);
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  align-items: center; /*alinear elementos de forma vertical */
-  justify-content: center; /*alinear de forma horizontal*/
-  visibility: hidden; /* Mantiene la pantalla escondida */
-}
-.menu_add_form_overlay.active{
-  visibility: visible; /* Muestra la pantalla al activarla mediante js */
-}
-
-.menu_add_form_popup{
-  background: #f8f8f8;
-  box-shadow: 0px 0px 5px 0px rgba(0,0,0,.5);
-  border-radius: 3px;
-  font-family: Arial, Helvetica, sans-serif;
-  padding: 20px;
+/* ADD MENU FORM */
+.select{
+  width: 100%;  /*ancho*/
+  margin-bottom: 10px; /*separador de inputs*/
+  height: 32px; /*altura*/
+  line-height: 52px; /* para que la fuente dentro del input quede centrada verticalmente */
+  font-size: 13px;
   text-align: center;
-  width: 400px;
-  transition: .4s ease all;
-  transform: scale(0.3);
-  opacity: 0;
+  border: 1px solid #BBBBBB;
 }
+.product_img_imput{
+  height: 100px;
+  width: 100px;
+  position: relative;
+  left: 150px;
 
+}
+.product_img_imput > input{
+  display: none;
+}
 /*FIN ADD MENU FORM*/
-
-
 
 /*----*/
 /*FIN MENU*/
+/*----*/
+
+
+/*----*/
+/*DELETE USER*/
+/*----*/
+
+.user-list{
+  background-color: #DDDDDD;
+  width: 100%;
+  /*line-height: 52px;*/
+  text-align: left;
+  border: 1px solid #BBBBBB;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.user-list ul li{
+  line-height: 20px;
+  font-size: 20px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.user-list li{
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+/*----*/
+/*FIN DELETE USER*/
 /*----*/
 
 
@@ -186,7 +203,7 @@
     padding: 20px;
     text-align: center;
     width: 400px;
-    transition: .1s ease all;
+    transition: .4s ease all;
     transform: scale(0.3);
     opacity: 0;
   }
@@ -235,6 +252,7 @@
     height: 40px;
     line-height: 40px;
     border: none;
+    margin-top: 5px;
     color: #f8f8f8;
     background-color: #000;
     border-radius: 3px;
@@ -253,6 +271,7 @@
     line-height: 40px;
     border: none;
     color: #f8f8f8;
+    margin-top: 5px;
     background-color: #000;
     border-radius: 3px;
     font-size: 16px;

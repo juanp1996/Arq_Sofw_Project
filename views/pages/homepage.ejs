@@ -1,10 +1,10 @@
+
 <!-- BARRA SUPERIOR CONDICIONADA POR USUARIO  -->
 <!-- BARRA SIN LOGEAR -->
 <%
  if (typeof req.session.user === 'undefined') {
  %>
-  <div id="header" xmlns:pop="http://www.w3.org/1999/html" xmlns:pop="http://www.w3.org/1999/xhtml"
-       xmlns:pop="http://www.w3.org/1999/xhtml" xmlns:pop="http://www.w3.org/1999/xhtml">
+  <div id="header">
     <ul class="nav">
       <li type="button"><a href="/">Inicio</a></li>
       <li type="button" id="btn-Open-login"><a>Login</a></li>
@@ -25,7 +25,8 @@
         <li type="button"><a href="/edit">Editar Menu</a>
           <ul>
             <li type="button" id="add_menu_01"><a>Agregar al menu</a></li>
-            <li type="button"><a href="">Quitar del menu</a></li>
+            <li type="button"><a>Quitar del menu</a></li>
+            <li type="button"><a>Pausar publicacion</a></li>
           </ul>
         </li>
         <li type="button"><a href="/pedidos">Pedidos</a></li>
@@ -117,23 +118,54 @@ MENU
 FORM PARA AGREGAR MENU
 -->
 
-<div class="menu_add_form_overlay" id="menu_add_form_overlay">
-  <div class="menu_add_form_popup" id="menu_add_form_popup">
+<div class="overlay" id="menu_add_form_overlay">
+  <div class="popup" id="menu_add_form_popup">
     <h3>Agregar un nuevo producto al menu</h3>
-    <div class="add_form_menu_input_conteiner" id="add_form_menu_input_conteiner">
-      <label>Agrega una imagen</label>
-      <div id="product_img_imput"><input type="file" accept=".jpg , .jpeg"></div><br>
-      <input type="text" placeholder="Nombre del producto" name="product_name"><br>
-      <input type="number" placeholder="Ingrese el valor del producto" name="product_price"><br>
-      <input type="text" placeholder="Seleccione el tipo de producto" name="product_type"><br>
-      <input type="text" placeholder="Ofrezca una descripcion de su producto" name="product_description"><br>
-    </div>
-    <button type="submit" class="btn_add_new_menu">Agregar</button>
-    <button type="button" class="btn_cancel_new_menu" id="btn_cancel_new_menu">Cancelar</button>
+    <form>
+      <div class="inputs-conteiner" id="add_form_menu_input_conteiner">
+        <input type="text" placeholder="Nombre del producto" name="product_name"><br>
+        <input type="number" placeholder="Ingrese el valor del producto" name="product_price"><br>
+        <select class="select"  name="product_type" id="product_type">
+          <option value="" disabled selected hidden>Seleccione el tipo de producto</option>
+          <option value="" id="food-type-option"></option>
+          <option value="1000">Agregar un nuevo tipo...</option>
+        </select><br>
+        <input type="text" placeholder="Ofrezca una descripcion de su producto" name="product_description"><br>
+
+        <div class="product_img_imput">
+          <label for="file-input">
+            <img src="/images/image-upload.png" style="cursor: pointer; width: 90px; height: 90px; position: relative; top: 5px;">
+          </label>
+          <input id="file-input" name="foto" type="file" accept=".jpg , .jpeg"/>
+        </div>
+
+      </div>
+    </form>
+    <button type="submit" class="btn-aceptar">Agregar</button>
+    <button class="btn-cancel" id="btn_cancel_new_menu">Cancelar</button>
   </div>
 </div>
 <!--
-FORM PARA AGREGAR MENU
+FIN DE FORM PARA AGREGAR MENU
+-->
+<!--
+FORM PARA CREAR NUEVO TIPO DE COMIDA
+-->
+<div class="overlay" id="new_food_type_conteiner">
+  <div class="popup"  id="new_food_type_popup">
+    <h3>Crear nuevo tipo</h3>
+    <span id="error-new-food-type"></span>
+    <form id="new-food-type-form">
+      <div class="inputs-conteiner">
+        <input type="text" placeholder="Escriba el nuevo tipo de comida" id="new-food-type-id">
+      </div>
+    </form>
+    <button type="submit" class="btn-aceptar" id="btn_new_food_type">Crear</button>
+    <button type="button" class="btn-cancel" id="btn_cancel_new_food_type">Cancelar</button>
+  </div>
+</div>
+<!--
+FIN DE FORM PARA CREAR NUEVO TIPO DE COMIDA
 -->
 
 
@@ -225,15 +257,13 @@ FIN DE MENSAJE EXITO EN LA CREACION DE USUARIO
 <!--
 BORRAR USUARIOS
 -->
-
 <div class="overlay" id="delete-user-overlay">
   <div class="popup" id="delete-user-popup">
     <h3 id="delete-user-h3">Borrar usuario</h3>
     <form id="form-delete-user">
       <div class="inputs-conteiner">
-        <input type="text" placeholder="Nombre" id="find_user_name" name="name">
-        <div>
-        <ul id="user-list"></ul>
+        <div class="user-list">
+            <ul id="user-list"></ul>
         </div>
         <button type="submit" class="btn-aceptar" id="btn-aceptar-delete">Aceptar</button>
         <button class="btn-cancel" id="btn-cancelar-delete">Cancelar</button>
@@ -241,7 +271,6 @@ BORRAR USUARIOS
     </form>
   </div>
 </div>
-
 <!--
 FIN DE BORRAR USUARIOS
 -->
@@ -254,13 +283,14 @@ if (typeof req.session.user != 'undefined') {
   <script src="/dependencies/DeleteUserPopup.js"></script>
   <script src="/dependencies/add_menu.js"></script>
   <script src="/dependencies/add_menu_01.js"></script>
+  <script src="/dependencies/new_food_type.js"></script>
 <%
 } else {
 %>
   <script src="/dependencies/LoginPopup.js"></script>
   <script src="/dependencies/background.js"></script>
   <script src="/dependencies/add_menu.js"></script>
-
+  <script src="/dependencies/new_food_type.js"></script>
 <%
 }
 %>

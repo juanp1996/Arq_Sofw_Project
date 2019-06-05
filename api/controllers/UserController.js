@@ -50,14 +50,9 @@ module.exports = {
       }
     }
   },
-  User_find: async function(req , res){
-    let findUser = req.body.name;
-    console.log(findUser);
-    let list = await User.find({name: {
-        'contains' : findUser
-      }});
+  User_list: async function(req , res){
+    let list = await User.find({});
     res.send({list:list});
-    // res.status(200).send({list: "El usuario ya existe"});
   },
 
 };
