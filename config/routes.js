@@ -1,6 +1,7 @@
 module.exports.routes = {
-  '/': {view: 'pages/homepage'},
-  '/Admin': {view: 'pages/admin'},
+ // '/': {view: 'pages/homepage'},
+  '/': {controller:  'MenuController', action: 'type_list_1'},
+  //   // '/Admin': {view: 'pages/admin'},
   '/edit': {view: 'pages/edit'},
   '/pedidos': {view: 'pages/pedidos'},
   '/logout': {controller: 'UserController', action: 'logout'},
@@ -9,4 +10,6 @@ module.exports.routes = {
   'POST /User_list': {controller: 'UserController', action: 'User_list'},
   'POST /new_food_type': {controller: 'MenuController', action: 'new_food_type'},
   'POST /type_list': {controller: 'MenuController', action: 'type_list'},
+  'POST /new_food': {controller: 'MenuController', action: 'new_food'},
+  'POST /Delete_user': {controller: 'UserController', action: 'Delete_user'},
 };

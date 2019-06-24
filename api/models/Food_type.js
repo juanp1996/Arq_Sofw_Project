@@ -12,9 +12,14 @@ module.exports = {
         type: "string",
         required: true,
       },
-      value:{
-        type: "number",
+      comidas:{
+        collection: 'menu',
+        via:'type',
       },
-    },
+      image:{
+        type: "string",
+        // required: true
+       },
+  }
 };
 

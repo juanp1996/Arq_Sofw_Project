@@ -102,18 +102,48 @@ FIN PANTALLA DE INICIO FONDO LOGO
 <!--
 MENU
 -->
-<div class="menu_conteiner" id="menu_conteiner">
-<div class="menu_add" id="menu_add">
-  <div class="menu-input">
-    <div id="img-cont_menu">
-      <img src="/images/img_p_menu.png" style="width: 90px; height: 90px; position: relative; top: 10px; left: 10px;">
-    </div>
-  </div>
-  <div class="text_conteiner">
-    <h3>Agregar</h3>
-  </div>
+<!--
+MENU PANTALLA PRINCIPAL - MUESTRA TODOS LOS PLATOS AGRUPADOS POR TIPOS
+-->
+<div class="fondo">
+<div class="menu" id="menu_conteiner">
+  <ul class="nav">
+<%for(let types of list){%>
+      <li class="type">
+        <a href="" class="type_name"><%= types.name %></a>
+        <ul>
+        <%for(let food of foodlist){ if (food.type === types.id && food.state === 1){ %>
+          <li class="food">
+            <a class="data"><%= food.name %>     $<%= food.price %>
+              <a type="button" class="botonContador" onClick="cambiar(0);"><i class="fas fa-minus"></i>
+                <a id="contador">0
+              <a type="button" class="botonContador" onClick="cambiar(1);"><i class="fas fa-plus"></i></a></a></a>
+            </a>
+          </li>
+        <%}}%>
+        </ul>
+      </li>
+<%}%>
+  </ul>
 </div>
 </div>
+<!--
+FIN MENU PANTALLA PRINCIPAL
+-->
+
+
+<!--<div class="menu_conteiner" id="menu_conteiner">-->
+<!--<div class="menu_add" id="menu_add">-->
+<!--  <div class="menu-input">-->
+<!--    <div id="img-cont_menu">-->
+<!--      <img src="/images/img_p_menu.png" style="width: 90px; height: 90px; position: relative; top: 10px; left: 10px;">-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div class="text_conteiner">-->
+<!--    <h3>Agregar</h3>-->
+<!--  </div>-->
+<!--</div>-->
+<!--</div>-->
 <!--
 FORM PARA AGREGAR MENU
 -->
@@ -121,7 +151,8 @@ FORM PARA AGREGAR MENU
 <div class="overlay" id="menu_add_form_overlay">
   <div class="popup" id="menu_add_form_popup">
     <h3>Agregar un nuevo producto al menu</h3>
-    <form>
+    <span id="error-new-food"></span>
+    <form id="form-create-food">
       <div class="inputs-conteiner" id="add_form_menu_input_conteiner">
         <input type="text" placeholder="Nombre del producto" name="product_name"><br>
         <input type="number" placeholder="Ingrese el valor del producto" name="product_price"><br>
@@ -131,19 +162,19 @@ FORM PARA AGREGAR MENU
           <option value="1000">Agregar un nuevo tipo...</option>
         </select><br>
         <input type="text" placeholder="Ofrezca una descripcion de su producto" name="product_description"><br>
-
-        <div class="product_img_imput">
-          <label for="file-input">
-            <img src="/images/image-upload.png" style="cursor: pointer; width: 90px; height: 90px; position: relative; top: 5px;">
-          </label>
-          <input id="file-input" name="foto" type="file" accept=".jpg , .jpeg"/>
-        </div>
-
       </div>
     </form>
-    <button type="submit" class="btn-aceptar">Agregar</button>
+    <button type="submit" class="btn-aceptar" id="btn-agregar-menu">Agregar</button>
     <button class="btn-cancel" id="btn_cancel_new_menu">Cancelar</button>
   </div>
+</div>
+<div class="overlay" id="success-food-create-overlay">
+<div class="popup" id="success-food-create">
+  <h3>El plato se a creado con exito</h3>
+  <label>¿Desea crear crear otro plato?</label><br>
+  <button class="btn-aceptar" id="btn-Create-other">Crear otro</button>
+  <button class="btn-cancel" id="btn_cancel_new_menu_1">Cerrar</button>
+</div>
 </div>
 <!--
 FIN DE FORM PARA AGREGAR MENU
@@ -157,7 +188,7 @@ FORM PARA CREAR NUEVO TIPO DE COMIDA
     <span id="error-new-food-type"></span>
     <form id="new-food-type-form">
       <div class="inputs-conteiner">
-        <input type="text" placeholder="Escriba el nuevo tipo de comida" id="new-food-type-id">
+        <input type="text" placeholder="Escriba el nombre del nuevo tipo de comida" id="new-food-type-id">
       </div>
     </form>
     <button type="submit" class="btn-aceptar" id="btn_new_food_type">Crear</button>
@@ -167,7 +198,6 @@ FORM PARA CREAR NUEVO TIPO DE COMIDA
 <!--
 FIN DE FORM PARA CREAR NUEVO TIPO DE COMIDA
 -->
-
 
 <!--
 FIN MENU
@@ -260,10 +290,11 @@ BORRAR USUARIOS
 <div class="overlay" id="delete-user-overlay">
   <div class="popup" id="delete-user-popup">
     <h3 id="delete-user-h3">Borrar usuario</h3>
+    <span id="delete_user_msg"></span>
     <form id="form-delete-user">
       <div class="inputs-conteiner">
         <div class="user-list">
-            <ul id="user-list"></ul>
+            <ul id="user-list" ></ul>
         </div>
         <button type="submit" class="btn-aceptar" id="btn-aceptar-delete">Aceptar</button>
         <button class="btn-cancel" id="btn-cancelar-delete">Cancelar</button>
@@ -271,6 +302,18 @@ BORRAR USUARIOS
     </form>
   </div>
 </div>
+
+<div class="overlay" id="Success-delete-overlay">
+  <div class="popup" id="Success-delete-popup">
+    <h3 id="success_create">!El usuario se a borrado con exito!</h3>
+    <form>
+      <div class="inputs-conteiner">
+        <button type="button" class="btn-aceptar" id="btn-delete-aceptar">Aceptar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
 <!--
 FIN DE BORRAR USUARIOS
 -->
@@ -284,6 +327,7 @@ if (typeof req.session.user != 'undefined') {
   <script src="/dependencies/add_menu.js"></script>
   <script src="/dependencies/add_menu_01.js"></script>
   <script src="/dependencies/new_food_type.js"></script>
+  <script src="/dependencies/pedido.js"></script>
 <%
 } else {
 %>
@@ -291,6 +335,7 @@ if (typeof req.session.user != 'undefined') {
   <script src="/dependencies/background.js"></script>
   <script src="/dependencies/add_menu.js"></script>
   <script src="/dependencies/new_food_type.js"></script>
+  <script src="/dependencies/pedido.js"></script>
 <%
 }
 %>

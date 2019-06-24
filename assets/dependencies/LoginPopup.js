@@ -7,6 +7,7 @@ var btnOpenLoginPopup = document.getElementById('btn-Open-login'),
     popup_login = document.getElementById('login-popup'),
     btnCancelLoginPopup = document.getElementById('btn-cancel-login'),
     errorLoginUser = document.getElementById('error-login-user'),
+    menu = document.getElementById('menu_conteiner'),
     formLoginUser = document.getElementById('form-login-user');
 
 btnOpenLoginPopup.addEventListener("click", function () {

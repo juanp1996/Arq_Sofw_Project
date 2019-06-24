@@ -21,6 +21,8 @@ btn_create_new_menu_01.addEventListener("click" ,async (e) => {
   };
   let response = await fetch(url , settings);
   let jsonResponse = await response.json();
+  selec_type_list.innerHTML = '<option value="" id="food-type-option"></option>\n' +
+    '<option value="1000">Agregar un nuevo tipo...</option>';
     jsonResponse.list.forEach((food_type) => {
       let typelist = food_type.name;
       let listItem = document.createElement('option');
@@ -32,4 +34,7 @@ btn_create_new_menu_01.addEventListener("click" ,async (e) => {
 btn_cancel_new_menu.addEventListener("click" , function () {
   menu_form_overlay.classList.remove('active');
   menu_form_popup.classList.remove('active');
+  while (selec_type_list.firstChild){
+    selec_type_list.removeChild(selec_type_list.firstChild)
+  }
 });

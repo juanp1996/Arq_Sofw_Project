@@ -9,11 +9,12 @@ module.exports = {
 
   attributes: {
     name:{type:"string", required: true},
-    //image:{type: "file", required: true},
     price:{type:"number", required:true},
     description:{type:"text"},
-    type:{type:"string",required:true},
-    state:{type:"number"}
+    state:{type:"number"},
+    type:{
+      model: 'food_type'
+    }
   }
 
 };
