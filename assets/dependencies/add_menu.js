@@ -9,7 +9,6 @@ var BtnAceptADDmenu = document.getElementById('btn_bckg_acept'),
 BtnAceptADDmenu.addEventListener("click", function() {
   menu.classList.add('active');
 });
-
 btn_create_new_menu_01.addEventListener("click" ,async (e) => {
   menu_form_overlay.classList.add('active');
   menu_form_popup.classList.add('active');
@@ -30,7 +29,6 @@ btn_create_new_menu_01.addEventListener("click" ,async (e) => {
       selec_type_list.appendChild(listItem);
     });
 });
-
 btn_cancel_new_menu.addEventListener("click" , function () {
   menu_form_overlay.classList.remove('active');
   menu_form_popup.classList.remove('active');

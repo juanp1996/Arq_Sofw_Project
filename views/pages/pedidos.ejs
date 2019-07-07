@@ -1,1 +1,91 @@
 
+
+<!-- BARRA SUPERIOR CONDICIONADA POR USUARIO  -->
+<!-- BARRA SIN LOGEAR -->
+<%
+if (typeof req.session.user === 'undefined') {
+%>
+  <div id="header">
+    <ul class="nav">
+      <li type="button"><a href="/">Inicio</a></li>
+      <li type="button" id="btn-Open-login"><a>Login</a></li>
+    </ul>
+  </div>
+
+<%
+}else{
+%>
+  <!-- BARRA PARA ADMIN -->
+  <%
+  if (req.session.user.hierarchy == 1 ) {
+  %>
+
+    <div id="header">
+      <ul class="nav">
+        <li type="button"><a href="/">Inicio</a></li>
+        <li type="button"><a href="/edit">Editar Menu</a>
+          <ul>
+            <li type="button" id="add_menu_01"><a>Agregar al menu</a></li>
+            <li type="button"><a>Quitar del menu</a></li>
+            <li type="button"><a>Pausar publicacion</a></li>
+          </ul>
+        </li>
+        <li><a href="">Admin</a>
+          <ul>
+            <li type="button" id="btn-new-user"><a>Agregar usuario</a></li>
+            <li type="button" id="btn-OpenDelete-user"><a>Borrar usuario</a></li>
+            <li type="button"><a href="">Presencia</a></li>
+            <li type="button"><a href="">Balance</a></li>
+          </ul>
+        </li>
+        <li type="button" id="user_info"><a href="">
+            <%=
+              req.session.user.name
+            %> <%=
+              req.session.user.lastname
+            %>
+          </a>
+          <ul>
+            <li type="button" id="logout"><a href="/logout">Cerrar sesion</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  <%}%>
+  <!-- BARRA PARA EMPLOYED -->
+  <% if (req.session.user.hierarchy == 2 ){ %>
+    <div id="header">
+      <ul class="nav">
+        <li type="button"><a href="/">Inicio</a></li>
+        <li type="button"><a href="/edit">Editar</a>
+          <ul>
+            <li type="button" id="add_menu_01"><a href="">Agregar al menu</a></li>
+            <li type="button"><a href="">Quitar del menu</a></li>
+          </ul>
+        </li>
+        <li type="button" id="user_info"><a href="">
+            <%=
+              req.session.user.name
+            %> <%=
+              req.session.user.lastname
+            %>
+          </a>
+          <ul>
+            <li type="button" id="logout"><a href="/logout">Cerrar sesion</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  <%}%>
+<%
+}
+%>
+<!-- FIN DE LA BARRA -->
+
+<script src="/dependencies/newpedido.js"></script>
+<script src="/dependencies/LoginPopup.js"></script>
+<script src="/dependencies/background.js"></script>
+<script src="/dependencies/add_menu.js"></script>
+<script src="/dependencies/new_food_type.js"></script>
+<script src="/dependencies/pedido.js"></script>
+<script src="/dependencies/deletefood.js"></script>

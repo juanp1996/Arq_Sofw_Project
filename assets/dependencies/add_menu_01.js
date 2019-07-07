@@ -24,7 +24,6 @@ btn_create_new_menu_01.addEventListener("click" ,async (e) => {
   let jsonResponse = await response.json();
   selec_type_list.innerHTML = '<option value="" id="food-type-option"></option>\n' +
     '<option value="1000">Agregar un nuevo tipo...</option>';
-  console.log(jsonResponse);
   jsonResponse.list.forEach((food_type) => {
     let typelist = food_type.name;
     let listItem = document.createElement('option');

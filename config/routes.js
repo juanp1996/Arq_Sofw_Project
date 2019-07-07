@@ -10,6 +10,13 @@ module.exports.routes = {
   'POST /User_list': {controller: 'UserController', action: 'User_list'},
   'POST /new_food_type': {controller: 'MenuController', action: 'new_food_type'},
   'POST /type_list': {controller: 'MenuController', action: 'type_list'},
+  'POST /food_list': {controller: 'MenuController', action: 'food_list'},
   'POST /new_food': {controller: 'MenuController', action: 'new_food'},
   'POST /Delete_user': {controller: 'UserController', action: 'Delete_user'},
+  'POST /Delete_food': {controller: 'MenuController', action: 'Delete_food'},
+  'POST /menu/sumar': {controller: 'PedidosController', action: 'Update_cant_p'},
+  'POST /menu/restar': {controller: 'PedidosController', action: 'Update_cant_m'},
+  'POST /menu/pedir': {controller: 'PedidosController', action: 'new'},
+  'POST /menu/pausar': {controller: 'MenuController', action: 'pausar'},
+  'POST /menu/reanudar': {controller: 'MenuController', action: 'reanudar'},
 };

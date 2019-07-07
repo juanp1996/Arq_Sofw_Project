@@ -16,6 +16,9 @@ module.exports = {
         collection: 'menu',
         via:'type',
       },
+      cant:{
+        type: "string" ,
+      },
       image:{
         type: "string",
         // required: true

@@ -14,7 +14,14 @@ module.exports = {
     state:{type:"number"},
     type:{
       model: 'food_type'
-    }
+    },
+    requiredBy:{
+      model: 'pedidos'
+    },
+    cant:{
+      type: "number"
+    },
+
   }
 
 };

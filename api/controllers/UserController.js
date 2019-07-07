@@ -55,10 +55,9 @@ module.exports = {
     res.send({list:list});
   },
   Delete_user: async function(req , res){
-    let id = req.body.name;
-
-    await User.destroy({id : id});
-      res.status(200).send();
+    let ids = req.body;
+    await User.destroy({id : ids});
+      res.json({err: 'none'});
     }
 };
 

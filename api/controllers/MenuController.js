@@ -12,6 +12,7 @@ module.exports = {
   let type = req.body.product_type;
   let description = req.body.product_description;
   let state = 1;
+  let cant = 0;
   let type_model = await Food_type.findOne({name : type})
   let check = await Menu.findOne({name : name});
   if(!check){
@@ -21,6 +22,7 @@ module.exports = {
         description: description,
         type: type_model.id,
         state: state,
+        cant: cant,
       },]);
       res.status(200).send({success: ""});
     }else{
@@ -44,13 +46,34 @@ module.exports = {
   },
   type_list: async function(req , res) {
     let list = await Food_type.find({});
+    let foodlist = await Menu.find({});
     res.send({list:list});
+  },
+  food_list: async function(req , res){
+    let foodlist = await Menu.find({});
+    res.send({foodlist:foodlist});
   },
   type_list_1: async function(req , res) {
     let list = await Food_type.find({});
     let foodlist = await Menu.find({});
     res.view('pages/homepage', {list:list , foodlist:foodlist});
   },
+  Delete_food: async function(req , res){
+    sails.log('entro al delete');
+    let ids = req.body;
+    await Menu.destroy({id : ids});
+    res.json({err: 'none'});
+  },
+  pausar : async function(req , res){
+    let id = req.body.id;
+      await Menu.update({id: id}).set({state: 0});
+      res.status(200).send()
+  },
+  reanudar : async function(req , res){
+    let id = req.body.id;
+    await Menu.update({id: id}).set({state: 1});
+    res.status(200).send()
+  }
 };
 
 

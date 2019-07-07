@@ -25,9 +25,8 @@
         <li type="button"><a href="/edit">Editar Menu</a>
           <ul>
             <li type="button" id="add_menu_01"><a>Agregar al menu</a></li>
-            <li type="button"><a>Quitar del menu</a></li>
-            <li type="button"><a>Pausar publicacion</a></li>
-          </ul>
+            <li type="button" id="food-delete-btn"><a>Quitar del menu</a></li>
+            </ul>
         </li>
         <li type="button"><a href="/pedidos">Pedidos</a></li>
         <li><a href="">Admin</a>
@@ -60,7 +59,7 @@
         <li type="button"><a href="/edit">Editar</a>
         <ul>
           <li type="button" id="add_menu_01"><a href="">Agregar al menu</a></li>
-          <li type="button"><a href="">Quitar del menu</a></li>
+          <li type="button" id="food-delete-btn"><a href="">Quitar del menu</a></li>
         </ul>
         </li>
         <li type="button"><a href="/pedidos">Pedidos</a></li>
@@ -112,24 +111,60 @@ MENU PANTALLA PRINCIPAL - MUESTRA TODOS LOS PLATOS AGRUPADOS POR TIPOS
       <li class="type">
         <a href="" class="type_name"><%= types.name %></a>
         <ul>
-        <%for(let food of foodlist){ if (food.type === types.id && food.state === 1){ %>
+        <%for(let food of foodlist){ if (food.type === types.id){ if(food.state === 1 || req.session.user){ %>
           <li class="food">
             <a class="data"><%= food.name %>     $<%= food.price %>
-              <a type="button" class="botonContador" onClick="cambiar(0);"><i class="fas fa-minus"></i>
-                <a id="contador">0
-              <a type="button" class="botonContador" onClick="cambiar(1);"><i class="fas fa-plus"></i></a></a></a>
+              <a type="button" class="botonContador" onclick="restar(<%=food.id%>)"><i class="fas fa-minus"></i>
+                <a><%=food.cant%>
+              <a type="button" class="botonContador" onclick="sumar(<%=food.id%>)"><i class="fas fa-plus"></i></a></a></a>
+              <% if (typeof req.session.user != "undefined"){
+                if (food.state === 1){%>
+                <a href="" type="button" class="botonContador" onclick="Pausar(<%=food.id%>)"><i class="fas fa-pause"></i></a>
+                <%} if(food.state === 0){%>
+                <a href="" type="button" class="botonContador" onclick="Reanudar(<%=food.id%>)"><i class="fas fa-play"></i></a>
+              <%}}%>
             </a>
           </li>
-        <%}}%>
+        <%}}}%>
         </ul>
       </li>
 <%}%>
+   <li class="type"><a class="type_name" id="reaPe" onclick="CrearPedido()">Realizar pedido</a></li>
   </ul>
 </div>
 </div>
+
+
 <!--
 FIN MENU PANTALLA PRINCIPAL
 -->
+
+<div class="overlay" id="delete-food-overlay">
+  <div class="popup" id="delete-food-popup">
+    <h3 id="delete-food-h3">Borrar Comida</h3>
+    <span id="delete_food_msg"></span>
+    <form id="form-delete-food">
+      <div class="inputs-conteiner">
+        <div class="user-list">
+          <ul id="food-list" ></ul>
+        </div>
+        <button type="submit" class="btn-aceptar" id="btn-aceptar-delete-food">Aceptar</button>
+        <button class="btn-cancel" id="btn-cancelar-delete-food">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="overlay" id="Success-delete-food-overlay">
+  <div class="popup" id="Success-delete-food-popup">
+    <h3 id="success_create">!El plato se a borrado con exito!</h3>
+    <form>
+      <div class="inputs-conteiner">
+        <button type="button" class="btn-aceptar" id="btn-delete-food-aceptar">Aceptar</button>
+      </div>
+    </form>
+  </div>
+</div>
 
 
 <!--<div class="menu_conteiner" id="menu_conteiner">-->
@@ -328,14 +363,17 @@ if (typeof req.session.user != 'undefined') {
   <script src="/dependencies/add_menu_01.js"></script>
   <script src="/dependencies/new_food_type.js"></script>
   <script src="/dependencies/pedido.js"></script>
+  <script src="/dependencies/deletefood.js"></script>
 <%
 } else {
 %>
+  <script src="/dependencies/newpedido.js"></script>
   <script src="/dependencies/LoginPopup.js"></script>
   <script src="/dependencies/background.js"></script>
   <script src="/dependencies/add_menu.js"></script>
   <script src="/dependencies/new_food_type.js"></script>
   <script src="/dependencies/pedido.js"></script>
+  <script src="/dependencies/deletefood.js"></script>
 <%
 }
 %>
